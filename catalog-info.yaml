@@ -1,0 +1,47 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orderssx-app-backend-dev
+  annotations:
+    argocd/app-name: orderssx-app-backend-dev
+    backstage.io/kubernetes-id: orderssx-app-backend
+    backstage.io/kubernetes-namespace: devhub
+    backstage.io/techdocs-ref: dir:.
+    github.com/project-slug: devhub-mad/
+    janus-idp.io/tekton-enabled: 'true'
+  tags:
+    - java
+    - quarkus
+    - maven
+    - workshop
+  links:
+    - url: https://console-openshift-console.apps.cluster-wdl5h.wdl5h.sandbox2975.opentlc.com/dev-pipelines/ns/devhub/
+      title: Pipelines
+      icon: web
+    - url: https://console-openshift-console.apps.cluster-wdl5h.wdl5h.sandbox2975.opentlc.com/k8s/ns/devhub/deployments/orderssx-app-backend
+      title: Deployment
+      icon: web
+    - url: https://devspaces.apps.cluster-wdl5h.wdl5h.sandbox2975.opentlc.com/#https://github.com/devhub-mad/?che-editor=che-incubator/che-code/latest&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/varodrig"
+  system: workshop-system-devhub
+  providesApis:
+    - backend-api-devhub
+---
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: workshop-system-devhub
+  tags:
+    - backstage
+    - janus-idp
+    - openshift
+    - workshop
+    - rh-summit
+spec:
+  owner: "user:default/varodrig"
+
